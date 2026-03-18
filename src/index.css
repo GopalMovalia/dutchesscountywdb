@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm cream background — unique, welcoming, not generic white */
+    --background: 36 30% 97%;
+    --foreground: 20 15% 10%;
+
+    --card: 36 30% 99%;
+    --card-foreground: 20 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 10%;
+
+    /* Deep Teal — signature primary */
+    --primary: 177 70% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm Terracotta accent */
+    --secondary: 18 68% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 36 20% 93%;
+    --muted-foreground: 20 10% 45%;
+
+    --accent: 177 20% 92%;
+    --accent-foreground: 177 70% 18%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 15% 85%;
+    --input: 36 15% 88%;
+    --ring: 177 70% 22%;
+
+    --radius: 0.75rem;
+
+    --surface: 36 25% 94%;
+    --nav-height: 4rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-primary/15 text-primary;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Clean teal-tinted card */
+  .glass {
+    @apply bg-card border border-border shadow-sm;
+  }
+
+  .glass-dark {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--primary) / 0.8);
+    box-shadow: 0 4px 24px hsl(var(--primary) / 0.15);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .hover-lift {
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
+  }
+
+  .section-tag {
+    @apply text-xs font-bold text-secondary tracking-[0.25em] uppercase;
+  }
+}
